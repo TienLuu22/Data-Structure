@@ -6,6 +6,7 @@ typedef int Position;
 typedef struct
 {
     ElementType Element[MaxLength];
+    int Last;
 } List;
 void MakeNullList(List *L);
 int insertList(ElementType x, Position p, List *L);
@@ -20,4 +21,4 @@ Position endList(List *L);
 void printList(List *L);
 void fullList(List *L);
 
-#endif
+#endif 

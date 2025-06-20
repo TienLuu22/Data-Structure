@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build with GCC",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-o",
+                "${workspaceFolder}\\bin\\debug\\${fileBasenameNoExtension}.exe",
+                "${file}",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "Generate Debug folder"
+            ],
+        },
+        {
+            "type": "shell",
+            "label": "Generate Debug folder",
+            "command": "cmd",
+            "args": [
+            "/c",
+            "if not exist \"${workspaceFolder}\\bin\\debug\" mkdir \"${workspaceFolder}\\bin\\debug\""
+            ]
+        },
+        {
+            "type": "cppbuild"
+            ,"label": "Build with MSVC",
+            "command": "cl.exe",
+            "args": [
+                "/Zi",
+                "/Fe${workspaceFolder}\\bin\\debug\\${fileBasenameNoExtension}.exe",
+                "${file}",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+
+            },
+            "options": {
+                "cwd": "${workspaceFolder}\\bin\\debug"
+            },
+
+        }
+    ]
+}
